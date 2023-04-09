@@ -1,0 +1,25 @@
+type Query {
+    findAll: MyBusStation
+    getMyBusStationInfo(id: ID!): Person
+}
+
+type MyBusStation {
+    myBusStations : [Person]
+}
+
+type Person {
+    firstName: String
+    lastName: String
+    phoneNumber: String
+    email: String
+    myRouteLocation: Station
+    myFavoritesStations : [Station]
+}
+
+type Station {
+    id: ID!
+    address: String
+    city: String
+    state: String
+    stationName: String
+}
