@@ -1,10 +1,10 @@
 # Skeleton - SpringBoot - GraphQl
-Java 20
+Java 17
 Spring Boot 3.0.5
 Gradle
 Dependencies
 * Spring for GraphQL
-* Spring for JPA
+* Spring for JPA (ToDo)
 * Spring Web
 * H2 Database
 * Lombok
