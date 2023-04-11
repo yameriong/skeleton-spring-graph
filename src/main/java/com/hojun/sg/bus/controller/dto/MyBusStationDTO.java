@@ -1,7 +1,7 @@
 package com.hojun.sg.bus.controller.dto;
 
 import com.hojun.sg.bus.domain.MyBusStationInfo;
-import com.hojun.sg.bus.domain.Station;
+import com.hojun.sg.bus.domain.StationInfo;
 import lombok.AccessLevel;
 import lombok.Builder;
 
@@ -9,7 +9,7 @@ import java.util.List;
 
 @Builder(access = AccessLevel.PRIVATE)
 public record MyBusStationDTO(String firstName, String lastName, String phoneNumber, String email,
-                              Station myRouteLocation, List<Station> myFavoritesStations) {
+                              StationInfo myRouteLocation, List<StationInfo> myFavoritesStations) {
 
     public static MyBusStationDTO of(MyBusStationInfo person) {
         return MyBusStationDTO.builder()

@@ -9,11 +9,11 @@ import java.util.UUID;
 
 @Builder(access = AccessLevel.PRIVATE)
 public record MyBusStationInfo(String id, String firstName, String lastName, String phoneNumber, String email,
-                              Station myRouteLocation, List<Station> myFavoritesStations) {
+                               StationInfo myRouteLocation, List<StationInfo> myFavoritesStations) {
     public static final MyBusStationInfo EMPTY = MyBusStationInfo.builder().build();
 
     public static MyBusStationInfo of(String firstName, String lastName, String phoneNumber, String email,
-                                      Station myRouteLocation, List<Station> myFavoritesStations){
+                                      StationInfo myRouteLocation, List<StationInfo> myFavoritesStations){
         return MyBusStationInfo.builder()
                 .id(UUID.randomUUID().toString())
                 .firstName(firstName)

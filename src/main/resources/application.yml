@@ -9,6 +9,8 @@ spring:
 
   jpa:
     show-sql: true
+    hibernate:
+      ddl-auto: create-drop
 
   graphql:
     graphiql:
@@ -19,3 +21,5 @@ spring:
       cors-enabled: true
       exception-handlers-enabled: true
 
+  logging.level:
+    org.hibernate.SQL: debug
