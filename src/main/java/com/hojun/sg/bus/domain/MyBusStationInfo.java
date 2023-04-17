@@ -1,6 +1,7 @@
 package com.hojun.sg.bus.domain;
 
 import com.hojun.sg.bus.controller.dto.MyBusStationDTO;
+import com.hojun.sg.bus.repository.entity.User;
 import lombok.AccessLevel;
 import lombok.Builder;
 
@@ -22,6 +23,17 @@ public record MyBusStationInfo(String id, String firstName, String lastName, Str
                 .email(email)
                 .myRouteLocation(myRouteLocation)
                 .myFavoritesStations(myFavoritesStations)
+                .build();
+    }
+
+    public static MyBusStationInfo ofUser(User user){
+        return MyBusStationInfo.builder()
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .phoneNumber(user.getPhoneNumber())
+                .email(user.getEmail())
+                .myRouteLocation(StationInfo.of(user.getMyRouteLocation()))
+                .myFavoritesStations(user.convertStationInfos())
                 .build();
     }
 

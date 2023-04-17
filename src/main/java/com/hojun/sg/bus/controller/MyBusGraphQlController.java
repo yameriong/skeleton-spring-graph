@@ -112,7 +112,7 @@ public class MyBusGraphQlController {
      * }
      */
     @QueryMapping
-    public MyBusStationDTO getMyBusStationInfo(@Argument String id){
+    public MyBusStationDTO getMyBusStationInfo(@Argument Long id){
         return myBusService.getMyBusStationInfoByPersonId(id).toDTO();
     }
 }
