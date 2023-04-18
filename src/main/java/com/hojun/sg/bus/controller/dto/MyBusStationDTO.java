@@ -9,7 +9,7 @@ import java.util.List;
 
 @Builder(access = AccessLevel.PRIVATE)
 public record MyBusStationDTO(String firstName, String lastName, String phoneNumber, String email,
-                              StationInfo myRouteLocation, List<StationInfo> myFavoritesStations) {
+                              StationInfo myRouteLocation) {
 
     public static MyBusStationDTO of(MyBusStationInfo person) {
         return MyBusStationDTO.builder()
@@ -17,7 +17,6 @@ public record MyBusStationDTO(String firstName, String lastName, String phoneNum
                 .lastName(person.lastName())
                 .email(person.email())
                 .myRouteLocation(person.myRouteLocation())
-                .myFavoritesStations(person.myFavoritesStations())
                 .build();
     }
 }
