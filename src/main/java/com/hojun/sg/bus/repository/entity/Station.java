@@ -3,6 +3,9 @@ package com.hojun.sg.bus.repository.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Builder(toBuilder = true)
@@ -18,4 +21,6 @@ public class Station {
     String city;
     String state;
     String stationName;
+    @OneToMany(mappedBy = "station")
+    List<MyFavoriteStation> myFavoriteStations = new ArrayList<>();
 }

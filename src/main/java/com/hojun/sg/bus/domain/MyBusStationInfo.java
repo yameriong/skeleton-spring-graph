@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @Builder(access = AccessLevel.PRIVATE)
 public record MyBusStationInfo(String id, String firstName, String lastName, String phoneNumber, String email,
-                               StationInfo myRouteLocation) {
+                               StationInfo myRouteLocation, List<StationInfo> myFavoritesStations) {
     public static final MyBusStationInfo EMPTY = MyBusStationInfo.builder().build();
 
     public static MyBusStationInfo of(String firstName, String lastName, String phoneNumber, String email,
@@ -22,6 +22,7 @@ public record MyBusStationInfo(String id, String firstName, String lastName, Str
                 .phoneNumber(phoneNumber)
                 .email(email)
                 .myRouteLocation(myRouteLocation)
+                .myFavoritesStations(myFavoritesStations)
                 .build();
     }
 
@@ -32,6 +33,7 @@ public record MyBusStationInfo(String id, String firstName, String lastName, Str
                 .phoneNumber(user.getPhoneNumber())
                 .email(user.getEmail())
                 .myRouteLocation(StationInfo.of(user.getMyRouteLocation()))
+                .myFavoritesStations(user.convertStationInfos())
                 .build();
     }
 

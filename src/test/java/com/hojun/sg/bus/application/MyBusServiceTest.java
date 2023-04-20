@@ -5,7 +5,6 @@ import com.hojun.sg.bus.repository.UserRepository;
 import com.hojun.sg.bus.repository.entity.Station;
 import com.hojun.sg.bus.repository.entity.User;
 import jakarta.transaction.Transactional;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

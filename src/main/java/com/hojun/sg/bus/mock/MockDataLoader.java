@@ -1,16 +1,18 @@
 package com.hojun.sg.bus.mock;
 
 import com.hojun.sg.bus.domain.MyBusStationInfo;
-import com.hojun.sg.bus.domain.MyBusStationInfos;
 import com.hojun.sg.bus.domain.StationInfo;
+import com.hojun.sg.bus.repository.MyFavoriteStationRepository;
 import com.hojun.sg.bus.repository.StationRepository;
 import com.hojun.sg.bus.repository.UserRepository;
+import com.hojun.sg.bus.repository.entity.MyFavoriteStation;
 import com.hojun.sg.bus.repository.entity.Station;
 import com.hojun.sg.bus.repository.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -20,6 +22,8 @@ public class MockDataLoader implements CommandLineRunner {
 
     UserRepository userRepository;
     StationRepository stationRepository;
+    MyFavoriteStationRepository myFavoriteStationRepository;
+
     public static MyBusStationInfo ofYang() {
         return MyBusStationInfo.of("yang", "yang", "010-1113-2221",
                 "yang@hose.com", inchonStationOf(), List.of());
@@ -67,9 +71,14 @@ public class MockDataLoader implements CommandLineRunner {
                 .phoneNumber("010-1113-2221")
                 .myRouteLocation(seoulSt)
                 .build();
+        var lists = List.of(
+                MyFavoriteStation.builder().user(yangUser).station(seoulSt).build(),
+                MyFavoriteStation.builder().user(hojunUser).station(seoulSt).build(),
+                MyFavoriteStation.builder().user(hojunUser).station(sanGokSt).build());
         stationRepository.save(seoulSt);
         stationRepository.save(sanGokSt);
         userRepository.save(hojunUser);
         userRepository.save(yangUser);
+        myFavoriteStationRepository.saveAll(lists);
     }
 }

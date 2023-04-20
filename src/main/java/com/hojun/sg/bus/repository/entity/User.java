@@ -1,8 +1,15 @@
 package com.hojun.sg.bus.repository.entity;
 
+import com.hojun.sg.bus.domain.StationInfo;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Many-to-many associations should not be made, but specific details are included as examples
+ */
 @Entity
 @Getter
 @Table(name = "myUser")
@@ -22,4 +29,10 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "station_id")
     Station myRouteLocation;
+    @OneToMany(mappedBy = "user")
+    List<MyFavoriteStation> myFavoriteStations = new ArrayList<>();
+
+    public List<StationInfo> convertStationInfos() {
+        return myFavoriteStations.stream().map(MyFavoriteStation::getStation).map(StationInfo::of).toList();
+    }
 }
