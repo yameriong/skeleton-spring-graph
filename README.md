@@ -8,6 +8,7 @@ Dependencies
 * Spring Web
 * H2 Database
 * Lombok
+* Redis
 * DGS Framework (ToDo)
 
 ### GraphQl ?
